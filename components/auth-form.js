@@ -5,6 +5,7 @@ import {useFormState} from 'react-dom'
 
 export default function AuthForm() {
      const[formState,formAction]=useFormState(signUp,{});
+    
   return (
     <form id="auth-form" action={formAction}>
       <div>
@@ -18,10 +19,13 @@ export default function AuthForm() {
         <label htmlFor="password">Password</label>
         <input type="password" name="password" id="password" />
       </p>
-
-      {formState.errors&&(
+      
+      {
+      formState?.errors&&(
+        
           <ul id="form-errors">
             {
+            
               Object.keys(formState.errors).map((error)=>(
                 <li key={error}>{formState.errors[error]}</li>
               ))
